@@ -34,3 +34,4 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+rsconnect/shinyapps.io/hornedrat/JW_covid_tracker.dcf

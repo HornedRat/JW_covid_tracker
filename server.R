@@ -106,7 +106,7 @@ shinyServer(function(input, output) {
             geom_line(size = 1) +
             ggtitle("Total active cases") +
             ylab("Active cases") +
-            scale_x_date(date_breaks = "1 month", date_labels =  "%m-%y")})
+            scale_x_date(date_breaks = "1 month", date_labels =  "%d.%m")})
     
     output$weekly_increase_graph <- renderPlot({
         
@@ -117,7 +117,7 @@ shinyServer(function(input, output) {
             geom_line(size = 1) +
             ggtitle("New cases weekly") +
             ylab("Weekly new cases") +
-            scale_x_date(date_breaks = "1 month", date_labels =  "%m-%y")})
+            scale_x_date(date_breaks = "1 month", date_labels =  "%d.%m")})
 
     output$stringency_graph <- renderPlot({
     
@@ -128,7 +128,7 @@ shinyServer(function(input, output) {
             geom_line(size = 1) +
             ggtitle("Oxford Govt. Response Stringency Index") +
             ylab("Stringency Index") +
-            scale_x_date(date_breaks = "1 month", date_labels =  "%m-%y")}) 
+            scale_x_date(date_breaks = "1 month", date_labels =  "%d.%m")}) 
         
     output$RKI_graph <- renderPlot({
         
@@ -143,6 +143,6 @@ shinyServer(function(input, output) {
             geom_hline(yintercept = 1, color = "red") +
             ylab("Rt") +
             theme(legend.position = "none") +
-            scale_x_date(date_breaks = "1 month", date_labels =  "%m-%y")})
+            scale_x_date(date_breaks = "1 month", date_labels =  "%d.%m")})
 
 })
