@@ -27,7 +27,7 @@ fluidPage(
             plotOutput("active_cases_graph")
         ),
         column(4,
-            plotOutput("weekly_increase_graph")
+            plotOutput("daily_increase_graph")
         )
     ),
     fluidRow(

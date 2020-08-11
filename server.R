@@ -108,15 +108,15 @@ shinyServer(function(input, output) {
             ylab("Active cases") +
             scale_x_date(date_breaks = "1 month", date_labels =  "%d.%m")})
     
-    output$weekly_increase_graph <- renderPlot({
+    output$daily_increase_graph <- renderPlot({
         
         merged_cases %>%
-            select(`Country/Region`, date, weekly_running_increase) %>%
+            select(`Country/Region`, date, weekly_running_increase, daily_running_increase) %>%
             filter(`Country/Region` == input$country) %>%
-            ggplot(aes(x = date, y = weekly_running_increase)) + 
+            ggplot(aes(x = date, y = daily_running_increase)) + 
             geom_line(size = 1) +
-            ggtitle("New cases weekly") +
-            ylab("Weekly new cases") +
+            ggtitle("New cases daily") +
+            ylab("Daily new cases") +
             scale_x_date(date_breaks = "1 month", date_labels =  "%d.%m")})
 
     output$stringency_graph <- renderPlot({
