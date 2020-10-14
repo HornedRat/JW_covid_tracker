@@ -24,10 +24,10 @@ fluidPage(
     fluidRow(
         column(1),
         column(4, 
-            plotOutput("active_cases_graph")
+            plotOutput("daily_increase_graph")
         ),
         column(4,
-            plotOutput("daily_increase_graph")
+            plotOutput("daily_deaths_graph")
         )
     ),
     fluidRow(

@@ -33,6 +33,7 @@ shinyServer(function(input, output) {
         arrange(`Country/Region`, date) %>%
         group_by(`Country/Region`, date) %>%
         summarise(deaths = sum(deaths)) %>%
+        mutate(daily_deaths = deaths - lag(deaths, n = 1)) %>%
         ungroup()
     
     stringency_index_df <- read_csv("https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv") %>%
@@ -97,15 +98,15 @@ shinyServer(function(input, output) {
 
 #### output ####
     
-    output$active_cases_graph <- renderPlot({
+    output$daily_deaths_graph <- renderPlot({
         
         merged_cases %>%
-            select(`Country/Region`, date, active_cases) %>%
+            select(`Country/Region`, date, daily_deaths) %>%
             filter(`Country/Region` == input$country) %>%
-            ggplot(aes(x = date, y = active_cases)) + 
+            ggplot(aes(x = date, y = daily_deaths)) + 
             geom_line(size = 1) +
-            ggtitle("Total active cases") +
-            ylab("Active cases") +
+            ggtitle("Deaths") +
+            ylab("Deaths") +
             scale_x_date(date_breaks = "1 month", date_labels =  "%d.%m")})
     
     output$daily_increase_graph <- renderPlot({
