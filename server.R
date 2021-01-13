@@ -36,7 +36,9 @@ shinyServer(function(input, output) {
         mutate(daily_deaths = deaths - lag(deaths, n = 1)) %>%
         ungroup()
     
-    stringency_index_df <- read_csv("https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv") %>%
+    stringency_index_df <- read_csv("https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv",
+                                    col_types = cols(RegionName = col_character(), 
+                                                     RegionCode = col_character())) %>%
         mutate(date = ymd(Date)) %>%
         mutate(`Country/Region` = case_when(
             CountryName == "United States" ~ "US",
